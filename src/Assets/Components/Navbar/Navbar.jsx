@@ -4,6 +4,7 @@ import hamburger_non_active from "../../images/hamburger-non-active.svg"
 import hamburger_active from "../../images/hamburger-active.svg"
 import home_icon from "../../images/home-icon.svg"
 import { useState } from 'react';
+import Button from '../button/Button';
 
 const Navbar = () => {
     const [toggleNavbar, setToggleNavbar] = useState(false)
@@ -45,8 +46,12 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="gap-3 hidden sm:block order-3">
-                        <button className='py-[10px] px-[10px] rounded-full mr-4'>Sign In</button>
-                        <button className='py-[10px] px-[10px] border-2 border-black rounded-full'>Sign Up</button>
+                        {/* Before create the Button componests */}
+                        {/* <button className='py-[10px] px-[10px] rounded-full mr-4'>Sign In</button>
+                        <button className='py-[10px] px-[10px] border-2 border-black rounded-full'>Sign Up</button> */}
+                        {/* After create the Button componests */}
+                        <Button text="Sign in"></Button>
+                        <Button text="Sign in" border="border-2 border-black rounded-full"></Button>
                     </div>
                 </div>
 
