@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../Assets/Components/button/Button";
 
+
 /* Learn About Usestate */
 const Contact = () => {
   const [jumlah, setJumlah] = useState(0);
@@ -33,7 +34,7 @@ const Contact = () => {
     "Purnama",
     "Putra",
     "Syafii",
-    "Ammar"
+    "Ammar",
   ];
   const [teamMembers, setTeamMembers] = useState([]);
   const addTeam = (name) => {
@@ -43,13 +44,37 @@ const Contact = () => {
   };
   const removeTeam = (name) => {
     setTeamMembers((members) => {
-      const result = [...members]
-      result.splice(
-        members.indexOf(name),1
-      )
+      const result = [...members];
+      result.splice(members.indexOf(name), 1);
       return result;
-      // return members.filter((member) => member !== name);
     });
+  };
+
+  const [form, setFrom] = useState([
+    {
+      name: "",
+      age: "",
+      nationality: "",
+    },
+  ]);
+  const onChangeName = (event) => {
+    setFrom((currentState) => {
+      return { ...currentState, name: event.target.value };
+    });
+  };
+  const onChangeAge = (event) => {
+    setFrom((currentState) => {
+      return { ...currentState, age: event.target.value };
+    });
+  };
+  const onChangeNationality = (event) => {
+    setFrom((currentState) => {
+      return { ...currentState, nationality: event.target.value };
+    });
+  };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    alert(JSON.stringify(form, null, 4));
   };
 
   return (
@@ -98,7 +123,9 @@ const Contact = () => {
 
       {/* useState in Array */}
       <div>
-        <h1 className="text-2xl font-bold mb-4 text-center">Learn useState: Array</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center">
+          Learn useState: Array
+        </h1>
         <div className="flex flex-wrap">
           <div className="w-full md:w-1/2 mb-6">
             <h3 className="text-lg text-center font-semibold">Classmates</h3>
@@ -139,6 +166,57 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {/* useStaet in Object */}
+
+      <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+  <h1 className="text-2xl font-bold text-gray-900 mb-6">Learn useState: Object</h1>
+  
+  <h3 className="text-lg font-semibold text-gray-700 mb-4">My Profile</h3>
+
+  <form onSubmit={onSubmit} className="space-y-4">
+    <div>
+      <label className="block text-sm font-medium text-gray-700">Name</label>
+      <input 
+        onChange={onChangeName} 
+        value={form.name} 
+        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      />
+    </div>
+    
+    <div>
+      <label className="block text-sm font-medium text-gray-700">Age</label>
+      <input 
+        onChange={onChangeAge} 
+        value={form.age} 
+        type="number" 
+        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      />
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium text-gray-700">Nationality</label>
+      <select 
+        onChange={onChangeNationality} 
+        value={form.nationality} 
+        className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+      >
+        <option value="">Select</option>
+        <option value="American">American</option>
+        <option value="Australian">Australian</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Italian">Italian</option>
+      </select>
+    </div>
+    
+    <button 
+      className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+    >
+      Save Profile
+    </button>
+  </form>
+</div>
+
     </>
   );
 };
