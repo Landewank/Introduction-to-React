@@ -1,11 +1,13 @@
 import React from 'react'
 
 const Button = (props) => {
+  const {bg_color,border,text}= props
   return (
-    <button className={`py-[10px] px-[10px] ${props.bg_color} rounded-full mr-4`}>
-        {'props.text'}
-    </button>
+    <>
+       <button className={`py-[10px] px-[10px] ${bg_color} rounded-full mr-4 ${border}`}>
+            {props.children}
+           </button>
+    </>
   )
 }
-
-export default Button
+export default Button   

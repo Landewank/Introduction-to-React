@@ -4,6 +4,7 @@ import About from './Pages/About';
 import Notfound from './Pages/Notfound';
 import Contact from './Pages/Contact';
 import Service from './Pages/Service';
+import Website from './Pages/Website';
 
 function App() {
   return (
@@ -12,7 +13,11 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/contact' element={<Contact/>}/>
-          <Route path='/service' element={<Service/>}/>
+          {/* nested Routing */}
+          <Route path='/service'>
+            <Route index element={<Service/>}/>
+            <Route path='website' element={<Website/>} />
+          </Route>
           <Route path='*' element={<Notfound/>}/>
       </Routes>
     </BrowserRouter>
