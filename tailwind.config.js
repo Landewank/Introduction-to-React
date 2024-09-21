@@ -10,7 +10,8 @@ module.exports = {
         secondary:'#F17117'
       },
       screens: {
-        'xs': '375px', // Menambahkan breakpoint untuk layar 375px
+        's': '375px', // Menambahkan breakpoint untuk layar 375px
+        'xs':'425px'
       }
     }
   },
